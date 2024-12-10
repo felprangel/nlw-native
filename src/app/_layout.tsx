@@ -1,3 +1,4 @@
+import { Loading } from "@/components/Loading";
 import { colors } from "@/styles/theme";
 import {
   Rubik_400Regular,
@@ -9,12 +10,17 @@ import {
 import { Stack } from "expo-router";
 
 export default function Layout() {
-  useFonts({
+  const [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
     Rubik_600SemiBold,
     Rubik_700Bold,
   });
+
+  if (!fontsLoaded) {
+    return <Loading />;
+  }
+
   return (
     <Stack
       screenOptions={{
