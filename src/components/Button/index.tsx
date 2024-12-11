@@ -8,7 +8,10 @@ import { styles } from "./styles";
 
 function Button(props: TouchableOpacityProps) {
   return (
-    <TouchableOpacity activeOpacity={0.8} style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      style={[styles.container, props.style]}
+    >
       {props.children}
     </TouchableOpacity>
   );
