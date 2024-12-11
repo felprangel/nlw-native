@@ -6,6 +6,7 @@ import {
   TouchableOpacityProps,
 } from "react-native";
 import { styles } from "./styles";
+import { colors } from "@/styles/colors";
 
 type ButtonProps = TouchableOpacityProps & {
   isLoading?: boolean;
@@ -16,8 +17,14 @@ function Button(props: ButtonProps) {
     <TouchableOpacity
       activeOpacity={0.8}
       style={[styles.container, props.style]}
+      disabled={props.isLoading}
+      {...props}
     >
-      {props.isLoading ? <ActivityIndicator /> : props.children}
+      {props.isLoading ? (
+        <ActivityIndicator size="small" color={colors.gray[100]} />
+      ) : (
+        props.children
+      )}
     </TouchableOpacity>
   );
 }
