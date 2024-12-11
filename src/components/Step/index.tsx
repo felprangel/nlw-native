@@ -10,8 +10,8 @@ export function Step(props: StepProps) {
   return (
     <View style={styles.container}>
       <View style={styles.details}>
-        <Text style={styles.title}>Titulo</Text>
-        <Text style={styles.description}>Descrição</Text>
+        <Text style={styles.title}>{props.title}</Text>
+        <Text style={styles.description}>{props.description}</Text>
       </View>
     </View>
   );
