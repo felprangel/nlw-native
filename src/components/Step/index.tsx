@@ -4,8 +4,8 @@ import { styles } from "./styles";
 export function Step() {
   return (
     <View style={styles.container}>
-      <Text>Titulo</Text>
-      <Text>Descrição</Text>
+      <Text style={styles.title}>Titulo</Text>
+      <Text style={styles.description}>Descrição</Text>
     </View>
   );
 }
