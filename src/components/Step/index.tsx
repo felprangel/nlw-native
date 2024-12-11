@@ -1,7 +1,12 @@
 import { Text, View } from "react-native";
 import { styles } from "./styles";
 
-export function Step() {
+interface StepProps {
+  title: string;
+  description: string;
+}
+
+export function Step(props: StepProps) {
   return (
     <View style={styles.container}>
       <View style={styles.details}>
