@@ -25,13 +25,15 @@ type Props = TouchableOpacityProps & {
 export function Place(props: Props) {
   return (
     <TouchableOpacity style={styles.container} {...props}>
-      <Image style={styles.image} />
+      <Image style={styles.image} source={{ uri: props.data.cover }} />
       <View style={styles.content}>
-        <Text style={styles.name}></Text>
-        <Text style={styles.description}></Text>
+        <Text style={styles.name}>{props.data.name}</Text>
+        <Text style={styles.description}>{props.data.description}</Text>
         <View style={styles.footer}>
           <IconTicket size={16} color={colors.red.base} />
-          <Text style={styles.tickets}> cupons disponíveis</Text>
+          <Text style={styles.tickets}>
+            {props.data.coupons} cupons disponíveis
+          </Text>
         </View>
       </View>
     </TouchableOpacity>
