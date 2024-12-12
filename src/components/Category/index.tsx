@@ -13,7 +13,9 @@ export function Category(props: CategoryProps) {
   const Icon = categoriesIcons[props.iconId];
 
   return (
-    <Pressable style={styles.container}>
+    <Pressable
+      style={(styles.container, props.isSelected && styles.containerSelected)}
+    >
       <Icon size={16} color={colors.gray[props.isSelected ? 100 : 400]} />
       <Text style={styles.name}>{props.name}</Text>
     </Pressable>
