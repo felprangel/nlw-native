@@ -1,6 +1,17 @@
-import { Text, View } from "react-native";
+import { api } from "@/services/api";
+import { Alert, Text, View } from "react-native";
 
 export default function Home() {
+  async function fetchCategories() {
+    try {
+      const { data } = await api.get("/categories");
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+      Alert.alert("Categorias", "Não foi possível carregas as categorias");
+    }
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <Text>Home</Text>
