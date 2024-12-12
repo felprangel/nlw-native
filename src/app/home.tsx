@@ -22,7 +22,7 @@ export default function Home() {
     }
   }
 
-  async function fetchPlaces() {
+  async function fetchMarkets() {
     try {
       if (!category) return;
       const { data } = await api.get(`/markets/category/${category}`);
