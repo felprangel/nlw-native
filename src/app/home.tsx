@@ -1,7 +1,7 @@
 import { Categories, CategoriesProps } from "@/components/Categories";
 import { api } from "@/services/api";
 import { useEffect, useState } from "react";
-import { Alert, Text, View } from "react-native";
+import { Alert, View } from "react-native";
 
 export default function Home() {
   const [categories, setCategories] = useState<CategoriesProps[]>([]);
