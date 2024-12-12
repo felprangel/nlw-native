@@ -22,6 +22,16 @@ export default function Home() {
     }
   }
 
+  async function fetchPlaces() {
+    try {
+      if (!category) return;
+      const { data } = await api.get(`/markets/category/${category}`);
+    } catch (error) {
+      console.error(error);
+      Alert.alert("Locais", "Não foi possível carregar os locais");
+    }
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <Categories
