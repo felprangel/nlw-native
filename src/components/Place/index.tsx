@@ -1,9 +1,28 @@
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  View,
+} from "react-native";
 import { styles } from "./styles";
 import { IconTicket } from "@tabler/icons-react-native";
 import { colors } from "@/styles/colors";
 
-export function Place() {
+export type PlaceProps = {
+  id: string;
+  name: string;
+  description: string;
+  coupons: number;
+  cover: string;
+  address: string;
+};
+
+type Props = TouchableOpacityProps & {
+  data: PlaceProps;
+};
+
+export function Place(props: Props) {
   return (
     <TouchableOpacity style={styles.container}>
       <Image style={styles.image} />
