@@ -1,4 +1,5 @@
-import { PressableProps } from "react-native";
+import { Pressable, PressableProps, Text } from "react-native";
+import { styles } from "./styles";
 
 type CategoryProps = PressableProps & {
   iconId: string;
@@ -6,4 +7,10 @@ type CategoryProps = PressableProps & {
   name: string;
 };
 
-export function Category() {}
+export function Category(props: CategoryProps) {
+  return (
+    <Pressable style={styles.container}>
+      <Text style={styles.name}>{props.name}</Text>
+    </Pressable>
+  );
+}
