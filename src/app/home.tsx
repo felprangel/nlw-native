@@ -15,6 +15,10 @@ export default function Home() {
     fetchCategories();
   });
 
+  useEffect(() => {
+    fetchMarkets();
+  }, [category]);
+
   async function fetchCategories() {
     try {
       const { data } = await api.get("/categories");
