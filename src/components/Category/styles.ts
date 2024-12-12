@@ -19,4 +19,11 @@ export const styles = StyleSheet.create({
     color: colors.gray[500],
     fontFamily: fontFamily.regular,
   },
+  containerSelected: {
+    backgroundColor: colors.green.base,
+    borderWidth: 0,
+  },
+  nameSelected: {
+    color: colors.gray[100],
+  },
 });
