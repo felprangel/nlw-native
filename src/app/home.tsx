@@ -1,5 +1,6 @@
 import { Categories, CategoriesProps } from "@/components/Categories";
 import { PlaceProps } from "@/components/Place";
+import { Places } from "@/components/Places";
 import { api } from "@/services/api";
 import { useEffect, useState } from "react";
 import { Alert, View } from "react-native";
@@ -48,6 +49,7 @@ export default function Home() {
         onSelect={setCategory}
         selected={category}
       />
+      <Places data={markets} />
     </View>
   );
 }
