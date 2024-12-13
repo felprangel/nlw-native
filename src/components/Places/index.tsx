@@ -10,8 +10,16 @@ type Props = {
 export function Places(props: Props) {
   const dimensions = useWindowDimensions();
   const bottomSheetRef = useRef<BottomSheet>(null);
+
+  const snapPoint = {
+    min: 278,
+    max: dimensions.height - 128,
+  };
   return (
-    <BottomSheet>
+    <BottomSheet
+      ref={bottomSheetRef}
+      snapPoints={[snapPoint.min, snapPoint.max]}
+    >
       <BottomSheetFlatList
         data={props.data}
         keyExtractor={(item) => item.id}
