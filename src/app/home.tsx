@@ -27,7 +27,7 @@ export default function Home() {
       setCategory(data[0].id);
     } catch (error) {
       console.error(error);
-      Alert.alert("Categorias", "Não foi possível carregas as categorias");
+      Alert.alert("Categorias", "Não foi possível carregar as categorias");
     }
   }
 
