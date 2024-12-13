@@ -1,5 +1,6 @@
 import { Loading } from "@/components/Loading";
 import { colors } from "@/styles/theme";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   Rubik_400Regular,
   Rubik_500Medium,
@@ -22,11 +23,13 @@ export default function Layout() {
   }
 
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: { backgroundColor: colors.gray[100] },
-      }}
-    />
+    <GestureHandlerRootView>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: colors.gray[100] },
+        }}
+      />
+    </GestureHandlerRootView>
   );
 }
