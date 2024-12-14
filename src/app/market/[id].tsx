@@ -1,3 +1,4 @@
+import { Coupon } from "@/components/Coupon";
 import { Cover } from "@/components/Cover";
 import { Details, DetailsProps } from "@/components/Details";
 import { Loading } from "@/components/Loading";
@@ -43,6 +44,7 @@ export default function Market() {
     <View style={{ flex: 1 }}>
       <Cover uri={data.cover} />
       <Details data={data} />
+      <Coupon code="FM4345T6" />
     </View>
   );
 }
