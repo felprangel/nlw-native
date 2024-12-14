@@ -8,6 +8,11 @@ import MapView from "react-native-maps";
 
 type MarketsProps = PlaceProps & {};
 
+const currentLocation = {
+  latitude: -23.561187293883442,
+  longitude: -46.656451388116494,
+};
+
 export default function Home() {
   const [categories, setCategories] = useState<CategoriesProps[]>([]);
   const [category, setCategory] = useState("");
@@ -50,7 +55,15 @@ export default function Home() {
         onSelect={setCategory}
         selected={category}
       />
-      <MapView style={{ flex: 1 }} />
+      <MapView
+        style={{ flex: 1 }}
+        initialRegion={{
+          latitude: currentLocation.latitude,
+          longitude: currentLocation.longitude,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        }}
+      />
       <Places data={markets} />
     </View>
   );
