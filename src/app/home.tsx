@@ -6,7 +6,10 @@ import { useEffect, useState } from "react";
 import { Alert, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
-type MarketsProps = PlaceProps & {};
+type MarketsProps = PlaceProps & {
+  latitude: number;
+  longitude: number;
+};
 
 const currentLocation = {
   latitude: -23.561187293883442,
