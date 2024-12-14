@@ -5,6 +5,7 @@ import { api } from "@/services/api";
 import { colors } from "@/styles/colors";
 import { fontFamily } from "@/styles/font-family";
 import { IconTemperature } from "@tabler/icons-react-native";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
 import MapView, { Callout, Marker } from "react-native-maps";
@@ -86,7 +87,7 @@ export default function Home() {
             coordinate={{ latitude: item.latitude, longitude: item.longitude }}
             image={require("@/assets/pin.png")}
           >
-            <Callout>
+            <Callout onPress={() => router.navigate(`/market/${item.id}`)}>
               <View>
                 <Text
                   style={{
