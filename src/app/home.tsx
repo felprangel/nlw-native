@@ -50,7 +50,6 @@ export default function Home() {
         onSelect={setCategory}
         selected={category}
       />
-
       <MapView style={{ flex: 1 }} />
       <Places data={markets} />
     </View>
