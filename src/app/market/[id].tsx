@@ -1,3 +1,4 @@
+import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
@@ -15,12 +16,17 @@ export default function Market() {
     try {
       const { data } = await api.get(`/markets/${params.id}`);
       setData(data);
+      setLoading(false);
     } catch (error) {
       console.error(error);
       Alert.alert("Erro", "Não foi possível carregar os dados", [
         { text: "OK", onPress: () => router.back() },
       ]);
     }
+  }
+
+  if (loading) {
+    return <Loading />;
   }
 
   return (
