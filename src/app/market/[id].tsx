@@ -1,5 +1,5 @@
 import { Cover } from "@/components/Cover";
-import { DetailsProps } from "@/components/Details";
+import { Details, DetailsProps } from "@/components/Details";
 import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
@@ -42,6 +42,7 @@ export default function Market() {
   return (
     <View style={{ flex: 1 }}>
       <Cover uri={data.cover} />
+      <Details data={data} />
     </View>
   );
 }
