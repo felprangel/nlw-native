@@ -1,9 +1,11 @@
 import { api } from "@/services/api";
 import { router, useLocalSearchParams } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
 
 export default function Market() {
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
   const params = useLocalSearchParams<{ id: string }>();
   useEffect(() => {
     fetchMarket();
@@ -12,6 +14,7 @@ export default function Market() {
   async function fetchMarket() {
     try {
       const { data } = await api.get(`/markets/${params.id}`);
+      setData(data);
     } catch (error) {
       console.error(error);
       Alert.alert("Erro", "Não foi possível carregar os dados", [
