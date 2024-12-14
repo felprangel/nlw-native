@@ -2,7 +2,7 @@ import { Cover } from "@/components/Cover";
 import { DetailsProps } from "@/components/Details";
 import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
-import { router, useLocalSearchParams } from "expo-router";
+import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
 
@@ -33,6 +33,10 @@ export default function Market() {
 
   if (loading) {
     return <Loading />;
+  }
+
+  if (!data) {
+    return <Redirect href="/home" />;
   }
 
   return (
