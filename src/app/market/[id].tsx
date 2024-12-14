@@ -13,6 +13,7 @@ type DataProps = DetailsProps & {
 
 export default function Market() {
   const [data, setData] = useState<DataProps>();
+  const [coupon, setCoupon] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const params = useLocalSearchParams<{ id: string }>();
   useEffect(() => {
@@ -44,7 +45,7 @@ export default function Market() {
     <View style={{ flex: 1 }}>
       <Cover uri={data.cover} />
       <Details data={data} />
-      <Coupon code="FM4345T6" />
+      {coupon && <Coupon code={coupon} />}
     </View>
   );
 }
