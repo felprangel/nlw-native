@@ -34,6 +34,15 @@ export function Details(props: Props) {
         <Info icon={IconMapPin} description={props.data.address} />
         <Info icon={IconPhone} description={props.data.phone} />
       </View>
+
+      <View style={styles.group}>
+        <Text style={styles.title}>Regulamento</Text>
+        {props.data.rules.map((rule) => (
+          <Text key={rule.id} style={styles.rule}>
+            {`\u2022 ${rule.description}`}
+          </Text>
+        ))}
+      </View>
     </View>
   );
 }
