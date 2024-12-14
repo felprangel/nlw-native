@@ -1,12 +1,17 @@
 import { Cover } from "@/components/Cover";
+import { DetailsProps } from "@/components/Details";
 import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
 
+type DataProps = DetailsProps & {
+  cover: string;
+};
+
 export default function Market() {
-  const [data, setData] = useState();
+  const [data, setData] = useState<DataProps>();
   const [loading, setLoading] = useState(true);
   const params = useLocalSearchParams<{ id: string }>();
   useEffect(() => {
