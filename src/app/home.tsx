@@ -4,6 +4,7 @@ import { Places } from "@/components/Places";
 import { api } from "@/services/api";
 import { useEffect, useState } from "react";
 import { Alert, View } from "react-native";
+import MapView from "react-native-maps";
 
 type MarketsProps = PlaceProps & {};
 
@@ -49,6 +50,8 @@ export default function Home() {
         onSelect={setCategory}
         selected={category}
       />
+
+      <MapView style={{ flex: 1 }} />
       <Places data={markets} />
     </View>
   );
