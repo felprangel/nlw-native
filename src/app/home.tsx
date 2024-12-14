@@ -2,10 +2,12 @@ import { Categories, CategoriesProps } from "@/components/Categories";
 import { PlaceProps } from "@/components/Place";
 import { Places } from "@/components/Places";
 import { api } from "@/services/api";
+import { colors } from "@/styles/colors";
+import { fontFamily } from "@/styles/font-family";
 import { IconTemperature } from "@tabler/icons-react-native";
 import { useEffect, useState } from "react";
-import { Alert, View } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import { Alert, Text, View } from "react-native";
+import MapView, { Callout, Marker } from "react-native-maps";
 
 type MarketsProps = PlaceProps & {
   latitude: number;
@@ -83,7 +85,30 @@ export default function Home() {
             identifier={item.id}
             coordinate={{ latitude: item.latitude, longitude: item.longitude }}
             image={require("@/assets/pin.png")}
-          />
+          >
+            <Callout>
+              <View>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    color: colors.gray[600],
+                    fontFamily: fontFamily.medium,
+                  }}
+                >
+                  {item.name}
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 12,
+                    color: colors.gray[600],
+                    fontFamily: fontFamily.regular,
+                  }}
+                >
+                  {item.address}
+                </Text>
+              </View>
+            </Callout>
+          </Marker>
         ))}
       </MapView>
       <Places data={markets} />
