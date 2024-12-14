@@ -6,7 +6,7 @@ import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { Alert, Text, View } from "react-native";
+import { Alert, Modal, Text, View } from "react-native";
 
 type DataProps = DetailsProps & {
   cover: string;
@@ -16,6 +16,8 @@ export default function Market() {
   const [data, setData] = useState<DataProps>();
   const [coupon, setCoupon] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+
   const params = useLocalSearchParams<{ id: string }>();
   useEffect(() => {
     fetchMarket();
@@ -31,6 +33,14 @@ export default function Market() {
       Alert.alert("Erro", "Não foi possível carregar os dados", [
         { text: "OK", onPress: () => router.back() },
       ]);
+    }
+  }
+
+  function handleOpenCamera() {
+    try {
+      setModalVisible(true);
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -50,9 +60,15 @@ export default function Market() {
 
       <View style={{ padding: 32 }}>
         <Button>
-          <Button.Title>Ler QR Code</Button.Title>
+          <Button.Title onPress={handleOpenCamera}>Ler QR Code</Button.Title>
         </Button>
       </View>
+
+      <Modal style={{ flex: 1 }} visible={modalVisible}>
+        <Button onPress={() => setModalVisible(false)}>
+          <Button.Title>Fechar</Button.Title>
+        </Button>
+      </Modal>
     </View>
   );
 }
