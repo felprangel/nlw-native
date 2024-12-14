@@ -2,6 +2,7 @@ import { Categories, CategoriesProps } from "@/components/Categories";
 import { PlaceProps } from "@/components/Place";
 import { Places } from "@/components/Places";
 import { api } from "@/services/api";
+import { IconTemperature } from "@tabler/icons-react-native";
 import { useEffect, useState } from "react";
 import { Alert, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
@@ -75,6 +76,15 @@ export default function Home() {
           }}
           image={require("@/assets/location.png")}
         />
+
+        {markets.map((item) => (
+          <Marker
+            key={item.id}
+            identifier={item.id}
+            coordinate={{ latitude: item.latitude, longitude: item.longitude }}
+            image={require("@/assets/pin.png")}
+          />
+        ))}
       </MapView>
       <Places data={markets} />
     </View>
