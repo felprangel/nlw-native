@@ -1,3 +1,4 @@
+import { Button } from "@/components/Button";
 import { Coupon } from "@/components/Coupon";
 import { Cover } from "@/components/Cover";
 import { Details, DetailsProps } from "@/components/Details";
@@ -46,6 +47,12 @@ export default function Market() {
       <Cover uri={data.cover} />
       <Details data={data} />
       {coupon && <Coupon code={coupon} />}
+
+      <View style={{ padding: 32 }}>
+        <Button>
+          <Button.Title>Ler QR Code</Button.Title>
+        </Button>
+      </View>
     </View>
   );
 }
