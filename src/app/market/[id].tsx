@@ -1,3 +1,4 @@
+import { Cover } from "@/components/Cover";
 import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
 import { router, useLocalSearchParams } from "expo-router";
@@ -31,7 +32,7 @@ export default function Market() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Text>{params.id}</Text>
+      <Cover uri={data.cover} />
     </View>
   );
 }
