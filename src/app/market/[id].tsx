@@ -6,8 +6,8 @@ import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
-import { Alert, Modal, Text, View } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import { Alert, Modal, View } from "react-native";
 
 type DataProps = DetailsProps & {
   cover: string;
@@ -19,6 +19,7 @@ export default function Market() {
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [couponIsFetching, setCouponIsFetching] = useState(false);
+  const qrLock = useRef(false);
 
   const [_, requestPermission] = useCameraPermissions();
   const params = useLocalSearchParams<{ id: string }>();
@@ -72,6 +73,19 @@ export default function Market() {
     }
   }
 
+  function handleUseCoupon(code: string) {
+    setModalVisible(false);
+
+    Alert.alert(
+      "Cupom",
+      "Não é possível reutilizar um cupom resgatado. Deseja realmente resgatar o cupom?",
+      [
+        { style: "cancel", text: "Não" },
+        { text: "Sim", onPress: () => getCoupon(code) },
+      ]
+    );
+  }
+
   if (loading) {
     return <Loading />;
   }
@@ -93,7 +107,16 @@ export default function Market() {
       </View>
 
       <Modal style={{ flex: 1 }} visible={modalVisible}>
-        <CameraView style={{ flex: 1 }} />
+        <CameraView
+          style={{ flex: 1 }}
+          facing="back"
+          onBarcodeScanned={({ data }) => {
+            if (data && !qrLock.current) {
+              qrLock.current = true;
+              handleUseCoupon(data);
+            }
+          }}
+        />
 
         <View style={{ position: "absolute", bottom: 32, left: 32, right: 32 }}>
           <Button
