@@ -26,7 +26,7 @@ export default function Market() {
 
   useEffect(() => {
     fetchMarket();
-  }, []);
+  }, [params.id, coupon]);
 
   async function fetchMarket() {
     try {
