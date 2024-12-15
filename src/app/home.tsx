@@ -20,7 +20,7 @@ const currentLocation = {
 };
 
 export default function Home() {
-  const [categories, setCategories] = useState<CategoriesProps[]>([]);
+  const [categories, setCategories] = useState<CategoriesProps>([]);
   const [category, setCategory] = useState("");
   const [markets, setMarkets] = useState<MarketsProps[]>([]);
 
