@@ -79,7 +79,7 @@ export default function Market() {
       <Modal style={{ flex: 1 }} visible={modalVisible}>
         <CameraView style={{ flex: 1 }} />
 
-        <View style={{ flex: 1, justifyContent: "center" }}>
+        <View style={{ position: "absolute", bottom: 32, left: 32, right: 32 }}>
           <Button onPress={() => setModalVisible(false)}>
             <Button.Title>Fechar</Button.Title>
           </Button>
