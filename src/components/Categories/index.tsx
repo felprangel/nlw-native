@@ -5,10 +5,10 @@ import { styles } from "./styles";
 export type CategoriesProps = {
   id: string;
   name: string;
-};
+}[];
 
 type Props = {
-  data: CategoriesProps[];
+  data: CategoriesProps;
   selected: string;
   onSelect(id: string): void;
 };
