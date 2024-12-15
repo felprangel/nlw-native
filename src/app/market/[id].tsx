@@ -4,7 +4,7 @@ import { Cover } from "@/components/Cover";
 import { Details, DetailsProps } from "@/components/Details";
 import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
-import { useCameraPermissions } from "expo-camera";
+import { CameraView, useCameraPermissions } from "expo-camera";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Modal, Text, View } from "react-native";
@@ -77,9 +77,13 @@ export default function Market() {
       </View>
 
       <Modal style={{ flex: 1 }} visible={modalVisible}>
-        <Button onPress={() => setModalVisible(false)}>
-          <Button.Title>Fechar</Button.Title>
-        </Button>
+        <CameraView style={{ flex: 1 }} />
+
+        <View style={{ flex: 1, justifyContent: "center" }}>
+          <Button onPress={() => setModalVisible(false)}>
+            <Button.Title>Fechar</Button.Title>
+          </Button>
+        </View>
       </Modal>
     </View>
   );
