@@ -4,6 +4,7 @@ import { Cover } from "@/components/Cover";
 import { Details, DetailsProps } from "@/components/Details";
 import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
+import { useCameraPermissions } from "expo-camera";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Modal, Text, View } from "react-native";
@@ -18,7 +19,9 @@ export default function Market() {
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
 
+  const [_, requestPermission] = useCameraPermissions();
   const params = useLocalSearchParams<{ id: string }>();
+
   useEffect(() => {
     fetchMarket();
   }, [params]);
@@ -36,11 +39,20 @@ export default function Market() {
     }
   }
 
-  function handleOpenCamera() {
+  async function handleOpenCamera() {
     try {
+      const { granted } = await requestPermission();
+
+      if (!granted) {
+        return Alert.alert(
+          "Câmera",
+          "Precisamos da sua permissão para acessar a câmera"
+        );
+      }
       setModalVisible(true);
     } catch (error) {
       console.error(error);
+      Alert.alert("Câmera", "Não foi possível acessar a câmera");
     }
   }
 
