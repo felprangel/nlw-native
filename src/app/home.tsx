@@ -4,7 +4,6 @@ import { Places } from "@/components/Places";
 import { api } from "@/services/api";
 import { colors } from "@/styles/colors";
 import { fontFamily } from "@/styles/font-family";
-import { IconTemperature } from "@tabler/icons-react-native";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
