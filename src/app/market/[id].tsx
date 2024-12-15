@@ -25,7 +25,7 @@ export default function Market() {
 
   useEffect(() => {
     fetchMarket();
-  }, [params]);
+  }, []);
 
   async function fetchMarket() {
     try {
