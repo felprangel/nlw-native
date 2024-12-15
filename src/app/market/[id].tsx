@@ -7,7 +7,7 @@ import { api } from "@/services/api";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useRef, useState } from "react";
-import { Alert, Modal, View } from "react-native";
+import { Alert, Modal, ScrollView, View } from "react-native";
 
 type DataProps = DetailsProps & {
   cover: string;
@@ -97,9 +97,11 @@ export default function Market() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Cover uri={data.cover} />
-      <Details data={data} />
-      {coupon && <Coupon code={coupon} />}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Cover uri={data.cover} />
+        <Details data={data} />
+        {coupon && <Coupon code={coupon} />}
+      </ScrollView>
 
       <View style={{ padding: 32 }}>
         <Button>
