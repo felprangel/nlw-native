@@ -116,7 +116,7 @@ export default function Market() {
           onBarcodeScanned={({ data }) => {
             if (data && !qrLock.current) {
               qrLock.current = true;
-              handleUseCoupon(data);
+              setTimeout(() => handleUseCoupon(data), 500);
             }
           }}
         />
