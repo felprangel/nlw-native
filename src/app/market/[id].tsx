@@ -18,6 +18,7 @@ export default function Market() {
   const [coupon, setCoupon] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  const [couponIsFetching, setCouponIsFetching] = useState(false);
 
   const [_, requestPermission] = useCameraPermissions();
   const params = useLocalSearchParams<{ id: string }>();
@@ -56,6 +57,21 @@ export default function Market() {
     }
   }
 
+  async function getCoupon(code: string) {
+    try {
+      setCouponIsFetching(true);
+      const { data } = await api.patch(`/coupons/${code}`);
+
+      Alert.alert("Cupom", data.coupon);
+      setCoupon(data.code);
+    } catch (error) {
+      console.error(error);
+      Alert.alert("Erro", "Não foi possível utilizar o cupom");
+    } finally {
+      setCouponIsFetching(false);
+    }
+  }
+
   if (loading) {
     return <Loading />;
   }
@@ -80,7 +96,10 @@ export default function Market() {
         <CameraView style={{ flex: 1 }} />
 
         <View style={{ position: "absolute", bottom: 32, left: 32, right: 32 }}>
-          <Button onPress={() => setModalVisible(false)}>
+          <Button
+            onPress={() => setModalVisible(false)}
+            isLoading={couponIsFetching}
+          >
             <Button.Title>Fechar</Button.Title>
           </Button>
         </View>
