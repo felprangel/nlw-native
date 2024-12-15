@@ -51,6 +51,7 @@ export default function Market() {
           "Precisamos da sua permissão para acessar a câmera"
         );
       }
+      qrLock.current = false;
       setModalVisible(true);
     } catch (error) {
       console.error(error);
